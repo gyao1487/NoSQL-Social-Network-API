@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+const { Schema, model } = require('mongoose');
 const thoughtSchema = require("./Thought");
 const friendSchema = require("./Friend");
 
@@ -8,7 +8,7 @@ const validateEmail = function (email) {
   return regex.test(email);
 };
 
-const userSchema = new mongoose.Schema({
+const userSchema = new Schema({
   username: { type: String, unique: true, required: true, trim: true },
   email: {
     type: String,
@@ -20,9 +20,13 @@ const userSchema = new mongoose.Schema({
     ],
     validate: [validateEmail, "Please use a valid email address."],
   },
-  thoughts: [thoughtSchema],
-  friends: [friendSchema],
+  thoughts: [{type: Schema.Types}],
+  friends: [{type: Schema.Types.ObjectId, ref: 'friend'}],
 });
+
+userSchema.virtual('friendCount').get(function(){
+    return this.friends.length;
+})
 
 const User = model("user", userSchema);
 
