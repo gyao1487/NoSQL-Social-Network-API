@@ -7,7 +7,7 @@ module.exports = {
       .then((thoughts) => res.json(thoughts))
       .catch((err) => res.status(500).json(err));
   },
-  
+
   //GET single thought
   getSingleThought(req, res) {
     Thought.findOne({ _id: req.params.thoughtId })
@@ -42,17 +42,18 @@ module.exports = {
   },
 
   //PUT to update thought
-  updateThought(req,res) {
+  updateThought(req, res) {
     Thought.findOneAndUpdate(
-        {_id: req.params.thoughtId},
-        {$set: req.body},
-        {new: true}
+      { _id: req.params.thoughtId },
+      { $set: req.body },
+      { new: true }
     )
-    .then((updatedThought) => 
-    !updatedThought
-    ? res.status(404).json({message:"Sorry, no thought with this ID"})
-    : res.json(updatedThought))
-    .catch((err)=> res.status(500).json(err))
+      .then((updatedThought) =>
+        !updatedThought
+          ? res.status(404).json({ message: "Sorry, no thought with this ID" })
+          : res.json(updatedThought)
+      )
+      .catch((err) => res.status(500).json(err));
   },
 
   //DELETE to remove thought
@@ -61,11 +62,36 @@ module.exports = {
       .then((thought) =>
         !thought
           ? res.status(404).json({ message: "Sorry, no thought with that ID" })
-          : res.send({message: "Thought deleted successfullly!"})
+          : res.send({ message: "Thought deleted successfullly!" })
       )
       .catch((err) => res.status(500).json(err));
   },
   //POST reaction in thought's reactions array
-
+  createReaction(req, res) {
+    Thought.findOneAndUpdate(
+      { _id: req.params.thoughtId },
+      { $addToSet: { reactions: req.body } },
+      { new: true }
+    )
+      .then((reaction) => {
+        !reaction
+          ? res.status(404).json({ message: "Error - please try again!" })
+          : res.json(reaction);
+      })
+      .catch((err) => res.status(500).json(err));
+  },
   //DELETE to pull and remove aa reaction by reactionID
+  deleteReaction(req, res) {
+    Thought.findOneAndUpdate(
+      { _id: req.params.thoughtId },
+      {$pull: { reactions: {reactionId: req.body.reactionId}} },
+      { new: true }
+    )
+      .then((thought) => {
+        !thought
+          ? res.status(404).json({ message: "Error- please try again" })
+          : res.json({ message: "Successfully deleted reaction!", thought });
+      })
+      .catch((err) => res.status(500).json(err));
+  },
 };
