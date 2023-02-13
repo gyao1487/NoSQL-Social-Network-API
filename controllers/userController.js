@@ -4,6 +4,8 @@ module.exports = {
   //GET all users
   getUsers(req, res) {
     User.find()
+    .select("_id username email thoughts friends friendCount")
+      .populate('thoughts')
       .then((users) => res.json(users))
       .catch((err) => res.status(500).json(err));
   },
@@ -12,6 +14,7 @@ module.exports = {
   getSingleUser(req, res) {
     User.findOne({ _id: req.params.userId })
       .select("_id username email thoughts friends friendCount")
+      .populate('thoughts')
       .then((user) =>
         !user
           ? res.status(404).json({ message: "No user with that ID" })
