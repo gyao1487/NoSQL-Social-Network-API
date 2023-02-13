@@ -1,6 +1,6 @@
 const { Schema, model } = require('mongoose');
 const thoughtSchema = require("./Thought");
-const friendSchema = require("./Friend");
+
 
 // Function to validate email Address
 const validateEmail = function (email) {
@@ -21,7 +21,7 @@ const userSchema = new Schema({
     validate: [validateEmail, "Please use a valid email address."],
   },
   thoughts: [{type: Schema.Types.ObjectId, ref: 'thought'}],
-  friends: [{type: Schema.Types.ObjectId, ref: 'friend'}],
+  friends: [{type: Schema.Types.ObjectId, ref: 'User'}],
 });
 
 userSchema.virtual('friendCount').get(function(){
