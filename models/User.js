@@ -1,6 +1,5 @@
-const { Schema, model } = require('mongoose');
+const { Schema, model } = require("mongoose");
 const thoughtSchema = require("./Thought");
-
 
 // Function to validate email Address
 const validateEmail = function (email) {
@@ -8,25 +7,33 @@ const validateEmail = function (email) {
   return regex.test(email);
 };
 
-const userSchema = new Schema({
-  username: { type: String, unique: true, required: true, trim: true },
-  email: {
-    type: String,
-    required: true,
-    unique: true,
-    match: [
-      /^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/,
-      "Please use a valid email address.",
-    ],
-    validate: [validateEmail, "Please use a valid email address."],
+const userSchema = new Schema(
+  {
+    username: { type: String, unique: true, required: true, trim: true },
+    email: {
+      type: String,
+      required: true,
+      unique: true,
+      match: [
+        /^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/,
+        "Please use a valid email address.",
+      ],
+      validate: [validateEmail, "Please use a valid email address."],
+    },
+    thoughts: [{ type: Schema.Types.ObjectId, ref: "thought" }],
+    friends: [{ type: Schema.Types.ObjectId, ref: "User" }],
   },
-  thoughts: [{type: Schema.Types.ObjectId, ref: 'thought'}],
-  friends: [{type: Schema.Types.ObjectId, ref: 'User'}],
-});
+  {
+    toJSON: {
+      virtuals: true,
+    },
+    id: false,
+  }
+);
 
-userSchema.virtual('friendCount').get(function(){
-    return this.friends.length;
-})
+userSchema.virtual("friendCount").get(function () {
+  return this.friends.length;
+});
 
 const User = model("user", userSchema);
 

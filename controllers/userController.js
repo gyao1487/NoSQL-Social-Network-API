@@ -11,7 +11,7 @@ module.exports = {
   //GET single user by _id with thought and friend data
   getSingleUser(req, res) {
     User.findOne({ _id: req.params.userId })
-      .select("-__v")
+      .select("_id username email thoughts friends friendCount")
       .then((user) =>
         !user
           ? res.status(404).json({ message: "No user with that ID" })
