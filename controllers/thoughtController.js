@@ -53,10 +53,18 @@ module.exports = {
     ? res.status(404).json({message:"Sorry, no thought with this ID"})
     : res.json(updatedThought))
     .catch((err)=> res.status(500).json(err))
-  }
+  },
 
   //DELETE to remove thought
-
+  deleteThought(req, res) {
+    Thought.findOneAndDelete({ _id: req.params.thoughtId })
+      .then((thought) =>
+        !thought
+          ? res.status(404).json({ message: "Sorry, no thought with that ID" })
+          : res.send({message: "Thought deleted successfullly!"})
+      )
+      .catch((err) => res.status(500).json(err));
+  },
   //POST reaction in thought's reactions array
 
   //DELETE to pull and remove aa reaction by reactionID
