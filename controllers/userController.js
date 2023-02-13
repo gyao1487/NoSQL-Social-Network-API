@@ -29,15 +29,17 @@ module.exports = {
 
   //PUT to update a user by _id
   updateUser(req, res) {
-    User.findOneAndUpdate({ _id: req.params.userId },{$set:req.body}, { new: true })
+    User.findOneAndUpdate(
+      { _id: req.params.userId },
+      { $set: req.body },
+      { new: true }
+    )
       .then((updatedUser) =>
         !updatedUser
-          ? res
-              .status(404)
-              .json({
-                message: "Sorry, no user with that ID. Please try again.",
-              })
-          :res.json(updatedUser)
+          ? res.status(404).json({
+              message: "Sorry, no user with that ID. Please try again.",
+            })
+          : res.json(updatedUser)
       )
       .catch((err) => res.status(500).json(err));
   },
@@ -55,6 +57,37 @@ module.exports = {
           message: "User and associated thoughts successfully deleted!",
         })
       )
+      .catch((err) => res.status(500).json(err));
+  },
+
+  //POST to add friend
+  addFriend(req, res) {
+    User.findOneAndUpdate(
+      { _id: req.params.userId },
+      { $addToSet: { friends: req.params.friendId } },
+      { new: true }
+    )
+      .then((updatedFriendData) => {
+        if (!updatedFriendData) {
+          return res.status(404).json({ message: "User(s) not found" });
+        }
+        return res.json(updatedFriendData);
+      })
+      .catch((err) => res.status(500).json(err));
+  },
+
+  deleteFriend(req, res) {
+    User.findOneAndUpdate(
+      { _id: req.params.userId },
+      { $pull: { friends: req.params.friendId } },
+      { new: true }
+    )
+      .then((updatedFriendData) => {
+        if (!updatedFriendData) {
+          return res.status(404).json({ message: "User(s) not found" });
+        }
+        return res.json(updatedFriendData);
+      })
       .catch((err) => res.status(500).json(err));
   },
 };
