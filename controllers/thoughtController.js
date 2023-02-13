@@ -5,16 +5,6 @@ module.exports = {
   getThoughts(req, res) {
     Thought.find()
       .then((thoughts) => res.json(thoughts))
-    //     const formattedThoughts = thoughts.map((thought) => ({
-    //       _id: thought._id,
-    //       thoughtText: thought.thoughtText,
-    //       username: thought.username,
-    //       reactions: thought.reactions,
-    //       reactionCount: thought.reactionCount,
-    //       created_at: thought.created_at
-    //     }));
-    //     res.json(formattedThoughts);
-    //   })
       .catch((err) => res.status(500).json(err));
   },
   
@@ -52,6 +42,18 @@ module.exports = {
   },
 
   //PUT to update thought
+  updateThought(req,res) {
+    Thought.findOneAndUpdate(
+        {_id: req.params.thoughtId},
+        {$set: req.body},
+        {new: true}
+    )
+    .then((updatedThought) => 
+    !updatedThought
+    ? res.status(404).json({message:"Sorry, no thought with this ID"})
+    : res.json(updatedThought))
+    .catch((err)=> res.status(500).json(err))
+  }
 
   //DELETE to remove thought
 
