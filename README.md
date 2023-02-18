@@ -106,7 +106,7 @@ Remove (DELETE) reaction:
 
 ## Credits
 
-Built by [Grace Yao]
+Built by Grace Yao
 
 ## License
 
@@ -118,9 +118,9 @@ https://spdx.org/licenses/MIT.html#:~:text=Text-,MIT%20License,-Copyright%20(c)%
 
 If you have any questions about this project, or have any inquiries about contributions or collaboration, please feel free to reach out! Refer to the contact information below:
 
-GitHub: [@gyao1487](https://github.com/gyao1487)
-Email: gee.yao@gmail.com
-[LinkedIn](https://www.linkedin.com/in/grace-yao-51304b139/) 
+* GitHub: [@gyao1487](https://github.com/gyao1487)
+* Email: gee.yao@gmail.com
+* [LinkedIn](https://www.linkedin.com/in/grace-yao-51304b139/) 
 
 
 
