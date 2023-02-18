@@ -40,7 +40,7 @@ Additionally, the API includes these features:
 * `express`
 
 ## Usage
-Click here to view the full video demo
+[Click here to view the full video demo!](https://watch.screencastify.com/v/m8rRj33rKLEYhFpUTpUP)
 1. Run `node index.js` in the terminal
 2. Once the application connects, open Insomnia (or similar application) and ensure that it is connected to the correct port
 3. In Insomnia, now you can run the CRUD operations in the app using GET, DEL, POST, and PUT routes at following api routes:
