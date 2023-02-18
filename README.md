@@ -30,9 +30,9 @@ Additionally, the API includes these features:
 
 ## Installation
 💾 This project requires the following already installed to your machine:
-* Node.js
-* Insomnia Core (or similar application)
-* MongoDB
+* [Node.js](https://nodejs.org/en/)
+* [Insomnia Core](https://insomnia.rest/download) (or similar application)
+* [MongoDB](https://www.mongodb.com/docs/manual/administration/install-community/)
 
 1. `git clone` the repo to your local machine so that you have the project files
 2. Run `npm install` to install the following npm package dependencies specified in `package.json`:
