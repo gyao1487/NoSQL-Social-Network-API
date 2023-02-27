@@ -19,7 +19,7 @@ This is an API for a social network web app where users can share thoughts, reac
   
 ## Features
 
-[!Screenshot](/assets/screenshot.PNG)
+![Screenshot](/assets/screenshot.PNG)
 
 Using the various routes, you can execute the following actions: 
 * Create a user account, delete a user account, update user information, search all users, search individual user
