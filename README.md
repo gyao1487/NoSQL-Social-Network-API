@@ -1,4 +1,6 @@
 # NoSQL Social Network API 
+Welcome to my NoSQL Social Network API! This API serves as the backbone for a feature-rich social network web app, empowering users to connect, share thoughts, and build meaningful friendships. Built with Node.js, Express.js, and MongoDB, it offers a seamless experience for developers seeking to create dynamic and engaging social networking platforms.
+
 ![NodeJS](https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white)
 ![Express.js](	https://img.shields.io/badge/Express.js-404D59?style=for-the-badge)
 ![MongoDB](https://img.shields.io/badge/MongoDB-4EA94B?style=for-the-badge&logo=mongodb&logoColor=white)
@@ -21,15 +23,13 @@ This is an API for a social network web app where users can share thoughts, reac
 
 ![Screenshot](/assets/screenshot.PNG)
 
-Using the various routes, you can execute the following actions: 
-* Create a user account, delete a user account, update user information, search all users, search individual user
-* Add and remove friends
-* Create a thought (post), delete a thought, search for all thoughts, search for individual thought
-* Add and delete reactions to thoughts
+With this API, developers can implement a wide range of functionalities, including:
 
-Additionally, the API includes these features:
-* A friend count property for users which display the number of total associated friends
-* A reaction count property for thoughts which display the number of total reactions associated with a specific thought 
+- User Management: Easily create, update, and delete user accounts, and search for individual or all users.
+- Friendship Management: Enable users to add or remove friends, fostering genuine connections.
+- Thought-Sharing: Allow users to create and delete thoughts, and search for individual or all thoughts.
+- Reaction Expressions: Let users add or remove reactions to thoughts, making the platform more interactive.
+- Friend and Reaction Count: Display friend count for users and reaction count for thoughts to provide valuable insights.
 
 ## Installation
 💾 This project requires the following already installed to your machine:
@@ -113,13 +113,12 @@ Built by Grace Yao
 
 ## License
 
-MIT license
-https://spdx.org/licenses/MIT.html#:~:text=Text-,MIT%20License,-Copyright%20(c)%20%3Cyear
+[MIT License](https://spdx.org/licenses/MIT.html#:~:text=Text-,MIT%20License,-Copyright%20(c)%20%3Cyear)
 
 ---
 ## Questions
 
-If you have any questions about this project, or have any inquiries about contributions or collaboration, please feel free to reach out! Refer to the contact information below:
+Thank you for exploring the NoSQL Social Network API! We hope this powerful tool will inspire you to create captivating social networking experiences. Feel free to contribute, report issues, or reach out with questions. Happy coding!
 
 * GitHub: [@gyao1487](https://github.com/gyao1487)
 * Email: gee.yao@gmail.com
